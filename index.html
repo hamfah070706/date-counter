@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Countdown App</title>
+<style>
+  body { 
+    text-align: center; 
+    font-family: Arial, sans-serif; 
+    background-color: #f4f4f9; 
+    margin-top: 50px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  }
+  h1 { color: #333; }
+  p { color: #666; font-size: 18px; }
+  #timer { 
+    font-size: 40px; 
+    font-weight: bold; 
+    color: #d9534f; 
+    margin-top: 20px; 
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  }
+</style>
+</head>
+<body>
+
+<h1>Countdown Timer</h1>
+<p>Target: August 10, 2026</p>
+<div id="timer">Loading...</div>
+
+<script>
+// நீங்கள் கணக்கிட விரும்பும் தேதியை இங்கே மாற்றலாம்
+var countDownDate = new Date("Aug 10, 2026 00:00:00").getTime();
+
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "TIME UP!";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
